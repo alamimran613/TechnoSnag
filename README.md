@@ -2,7 +2,7 @@
 
 Welcome to the **Techno Snag** repository! 🚀
 
-This repository is dedicated to hosting and saving files, code, and other resources shared on my **YouTube channel** ➡️ [Techno Snag](https://www.youtube.com/technosnag). Here, you'll find all the materials you need to follow along with my tutorials and projects.
+This repository is dedicated to hosting and saving files, code, and other resources shared on my **YouTube channel** [Techno Snag](https://www.youtube.com/technosnag). Here, you'll find all the materials you need to follow along with my tutorials and projects.
 
 ## 📂 Repository Contents
 
@@ -15,6 +15,10 @@ This repository is dedicated to hosting and saving files, code, and other resour
 Stay updated with the latest tutorials and projects by subscribing to my YouTube channel.
 
 [![Techno Snag YouTube Channel](https://img.shields.io/badge/YouTube-Techno%20Snag-red?logo=youtube&logoColor=white)](https://www.youtube.com/technosnag)
+
+## ⭐ Star This Repository!
+
+If you find the content helpful, please consider starring this repository. Your support helps me to continue creating high-quality content.
 
 ## 👍 Like, Share, and Subscribe!
 
