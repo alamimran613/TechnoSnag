@@ -26,6 +26,10 @@ If you find the content helpful, don't forget to **Like**, **Share**, and **Subs
 
 Thank you for visiting the Techno Snag repository! Happy coding! 🎉
 
+## 📄 License
+
+You can use these codes for commercial use in your project by giving shoutout in your content and description when you are create video or writing blog post.
+
 ---
 
 <p align="center">

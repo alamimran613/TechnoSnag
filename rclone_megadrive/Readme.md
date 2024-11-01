@@ -32,6 +32,6 @@ If you have any questions or need assistance, feel free to reach out:
 
 ## 📄 License
 
-You can use this code for commercial use in your project by giving shoutout in your content. 
+You can use these codes for commercial use in your project by giving shoutout in your content and description when you are create video or writing blog post. 
 
 Happy Learning! 😊😊
