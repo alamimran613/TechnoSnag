@@ -14,7 +14,7 @@ This repository is dedicated to hosting and saving files, code, and other resour
 
 Stay updated with the latest tutorials and projects by subscribing to my YouTube channel.
 
-[![Techno Snag YouTube Channel](https://img.shields.io/badge/YouTube-Techno%20Snag-red?logo=youtube&logoColor=white)](https://www.youtube.com/technosnag)
+[![Techno Snag YouTube Channel](https://img.shields.io/badge/YouTube-Techno%20Snag-red?logo=youtube&logoColor=white)](https://www.youtube.com/technosnag) [![Techno Snag Instagram](https://img.shields.io/badge/Instagram-Techno%20Snag-pink?logo=instagram&logoColor=white)](https://www.instagram.com/technosnag) [![Techno Snag Facebook](https://img.shields.io/badge/Facebook-Techno%20Snag-blue?logo=facebook&logoColor=white)](https://www.facebook.com/technosnag) [![Techno Snag Twitter](https://img.shields.io/badge/Twitter-Techno%20Snag-lightblue?logo=twitter&logoColor=white)](https://twitter.com/technosnag)
 
 ## ⭐ Star This Repository!
 
@@ -28,7 +28,7 @@ Thank you for visiting the Techno Snag repository! Happy coding! 🎉
 
 ## 📄 License
 
-You can use these codes for commercial use in your project by giving shoutout in your content and description when you are create video or writing blog post.
+You can use these codes for commercial use in your project by giving a shoutout in your content and description when you create a video or write a blog post.
 
 ---
 
