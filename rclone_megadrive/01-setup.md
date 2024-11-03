@@ -19,15 +19,20 @@ https://winfsp.dev/rel/
 ```bash
 rclone config
 ```
-### 4. Test Cloud Link Status
+### 4. List Files on Terminal
+```bash
+rclone ls megadrive1:
+```
+
+### 5. List Directories on Terminal
 ```bash
 rclone lsd megadrive1:
 ```
-### 5. Mount Cloud Storage to PC Drive
+### 6. Mount Cloud Storage to PC Drive
 ```bash
 rclone mount megadrive1: M: --vfs-cache-mode writes --poll-interval 5s
 ```
-### 6. Terminate rclone Process Forcefully
+### 7. Terminate rclone Process Forcefully
 ```bash
 taskkill /IM rclone.exe /F
 ```

@@ -8,11 +8,7 @@ Welcome to the **Rclone MegaDrive Cloud mounting project!** This folder contains
 - Unmount scripts
 - VBS and Batch files for automation
 
-## 💡 About Techno Snag
 
-🔔 **Techno Snag** is your go-to channel for tech tutorials, tips, and tricks! Join us to learn more about various tools and technologies that can enhance your digital experience. 
-
-👉 [Subscribe to Techno Snag on YouTube](https://www.youtube.com/c/TechnoSnag) 🎥
 
 ## 🚀 Getting Started
 
@@ -22,6 +18,7 @@ To get started with Rclone, follow these steps:
 2. **Download and Install WINFSP:** For mounting MegaDrive as Drive.
 2. **Configuration**: Set up your MegaDrive accounts using the provided files and YouTube video tutorial, Which available on my 👉 [YouTube channel](https://www.youtube.com/c/TechnoSnag) 🎥
 3. **Run the Scripts**: Use the `.bat` or `.vbs` files to mount your drives easily.
+4. **Watch Setup Tutorial on YouTube:** [Click Me For Watch](https://youtu.be/W6ftppM1HqA) 🎥
 
 ## 🤝 Support
 
