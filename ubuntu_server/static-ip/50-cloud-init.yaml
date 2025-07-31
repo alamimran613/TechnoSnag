@@ -1,0 +1,11 @@
+network:
+  version: 2
+  ethernets:
+    enp0s3:
+      dhcp4: no
+      addresses: [192.168.29.50/24]
+      nameservers:
+        addresses: [8.8.8.8, 1.1.1.1]
+      routes:
+        - to: default
+          via: 192.168.29.1
