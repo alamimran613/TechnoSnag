@@ -27,7 +27,24 @@ sudo apt install -y openssh-server net-tools
 
 ---
 
-## 📁 Step 2: Locate Netplan Configuration File
+## 🌐 Step 2. View Routing Table (Subnet & Gateway)
+
+To view the kernel routing table and identify default gateway and subnet:
+
+```
+ip route
+```
+| Field             | Description                                         |
+| ----------------- | --------------------------------------------------- |
+| `default`         | Default route (used when no other route matches)    |
+| `via`             | Gateway IP address (your router)                    |
+| `dev`             | Network interface (e.g., `enp0s3`, `eth0`, `wlan0`) |
+| `192.168.29.0/24` | Subnet range (CIDR notation)                        |
+| `src`             | IP address assigned to this interface               |
+
+---
+
+## 📁 Step 3: Locate Netplan Configuration File
 
 Open the terminal and run:
 
@@ -40,13 +57,13 @@ You will likely see a file such as: `50-cloud-init.yaml`.
 
 ---
 
-## Step 3: 🔁 To find your correct interface name, run:
+## Step 4: 🔁 To find your correct interface name, run:
 
 ```bash
 ifconfig -a
 ```
 
-## 📝 Step 4: Edit Netplan Configuration File
+## 📝 Step 5: Edit Netplan Configuration File
 
 First, open the file with `nano`:
 
@@ -55,30 +72,27 @@ sudo nano /etc/netplan/50-cloud-init.yaml
 ```
 
 Now **copy the configuration below and paste it into the file**, replacing any existing content:
-or Use This File ➡️ ***[50-cloud-init.yaml](./50-cloud-init.yaml)***
+or Use This File ➡️ **_[50-cloud-init.yaml](./50-cloud-init.yaml)_**
 
 ```yaml
-network:                    # Main network configuration block
-  version: 2                # Netplan config version (always 2 for modern systems)
-  ethernets:                # Ethernet interface section
-    enp0s3:                 # Replace this with your actual network interface name (use `ip a` to check)
-      dhcp4: no             # Disables automatic IP assignment (DHCP)
-      addresses: [192.168.29.50/24]   # Replace with your desired static IP and subnet (e.g., 192.168.1.X/24)
+network: # Main network configuration block
+  version: 2 # Netplan config version (always 2 for modern systems)
+  ethernets: # Ethernet interface section
+    enp0s3: # Replace this with your actual network interface name (use `ip a` to check)
+      dhcp4: no # Disables automatic IP assignment (DHCP)
+      addresses: [192.168.29.50/24] # Replace with your desired static IP and subnet (e.g., 192.168.1.X/24)
       nameservers:
         addresses: [8.8.8.8, 1.1.1.1] # Google and Cloudflare DNS
       routes:
         - to: default
-          via: 192.168.29.1           # Replace with your router’s gateway IP (usually 192.168.1.1 or 192.168.0.1)
-
+          via: 192.168.29.1 # Replace with your router’s gateway IP (usually 192.168.1.1 or 192.168.0.1)
 ```
-
-
 
 After editing, press `Ctrl + O`, then `Enter` to save, and `Ctrl + X` to exit.
 
 ---
 
-## 💾 Step 4: Apply the Netplan Configuration
+## 💾 Step 6: Apply the Netplan Configuration
 
 ```bash
 sudo netplan apply
@@ -86,13 +100,13 @@ sudo netplan apply
 
 ---
 
-## 🔍 Step 5: Verify the Static IP Address
+## 🔍 Step 7: Verify the Static IP Address
 
 ```bash
 ifconfig -a
 ```
-Look for something like: `enp0s3 192.168.29.50/24`
 
+Look for something like: `enp0s3 192.168.29.50/24`
 
 ---
 
@@ -129,7 +143,7 @@ sudo nano /etc/cloud/cloud.cfg.d/99-disable-network-config.cfg
 Add:
 
 ```yaml
-network: {config: disabled}
+network: { config: disabled }
 ```
 
 Save and exit, then reboot:
@@ -158,5 +172,4 @@ Your Ubuntu server now has a **permanent static IP** using Netplan and includes 
 
 ---
 
-## ⭐ ***Learn What is cloud-init [Click Here To Know](./cloud-init.md)***
-
+## ⭐ **_Learn What is cloud-init [Click Here To Know](./cloud-init.md)_**
