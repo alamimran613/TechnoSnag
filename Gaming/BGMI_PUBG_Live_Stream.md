@@ -72,7 +72,7 @@ Please adjust your title according to title length.
 
 🎭 **Instagram:** https://www.instagram.com/yourusenamehere/
 
-🎭 **Facebook**:** https://www.facebook.com/yourusenamehere/
+🎭 Facebook**:** https://www.facebook.com/yourusenamehere/
 
 🎭 **Twitter:**  https://twitter.com/yourusenamehere/
 
