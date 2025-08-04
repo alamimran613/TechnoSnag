@@ -28,6 +28,8 @@ Stay updated with the latest tutorials and projects by subscribing to my YouTube
 
 ## 🤝 Contributing to Techno Snag
 
+### 📌 Before Contributing Read ➡️ [Contribution Guidelines](./CONTRIBUTING.md)
+
 Want to contribute? Awesome! You can help improve this repository by:
 
 - Forking the repository and submitting a pull request (PR) with your improvements.
