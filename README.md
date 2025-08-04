@@ -74,6 +74,8 @@ Thank you for visiting the Techno Snag repository! Happy coding! 🎉
 
 ## 📄 License
 
+🛡️ License: [MIT](LICENSE) — Free to use with credit to **Imran Alam / TechnoSnag**
+
 You can use these codes for commercial use in your project by giving a shoutout in your content and description when you create a video or write a blog post.
 
 ---
