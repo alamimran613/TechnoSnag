@@ -1,6 +1,6 @@
 # GitHub Markdown Learn
 
-Thi is a simple and most used markdown template file.
+This is a simple and most used markdown template file.
 
 ## 1. ✅ Header:
 
