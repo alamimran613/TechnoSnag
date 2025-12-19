@@ -13,6 +13,12 @@ If you’ve found my content helpful — tutorials, code, or videos — and want
 [![Donate via PayPal](https://img.shields.io/badge/Donate-PayPal-003087?style=for-the-badge&logo=paypal&logoColor=white)](https://paypal.me/imranalam)
 [![Donate via UPI](https://img.shields.io/badge/Donate-UPI-4CAF50?style=for-the-badge&logo=googlepay&logoColor=white)](https://github.com/alamimran613/Donations/blob/main/README.md)
 
+## 🧰 Tech Recommendations
+
+A curated list of tech products and subscriptions I genuinely suggest for developers/DevOps learners and content creators.
+
+👉 Visit: [Click Me To Visit Tech Recommendations](./tech-recommendations/)
+
 ## 📂 Repository Contents
 
 - **Code**: All source code from my videos.
