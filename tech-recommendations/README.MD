@@ -28,4 +28,4 @@ Use it when you want a quick “what should I buy/use?” reference without wast
 
 ## 🤝 Affiliate disclosure (Transparency)
 
-Some links on this page are affiliate links. If you buy through them, TechnoSnag may earn a small commission at no extra cost to you. GitHub supports standard Markdown formatting in README files, so this page will display cleanly in your repository. [web:6][web:37]
+Some links on this page are affiliate links. If you buy through them, TechnoSnag may earn a small commission at no extra cost to you.
