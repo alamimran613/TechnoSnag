@@ -170,31 +170,54 @@ ping google.com
 
 ---
 
-### ✏️ Step 5.1: Edit sysctl configuration
+## 🚫 Disable IPv6 at GRUB (Kernel Level – Recommended)
+
+This method disables IPv6 **completely at boot time**.  
+It is the **most reliable and permanent** way to turn off IPv6 on Linux systems.
+
+---
+
+### ✏️ Step 1: Edit GRUB Configuration
 
 ```bash
-sudo nano /etc/sysctl.conf
-```
-
-Add these lines at the end:
-
-```conf
-net.ipv6.conf.all.disable_ipv6 = 1
-net.ipv6.conf.default.disable_ipv6 = 1
-net.ipv6.conf.lo.disable_ipv6 = 1
+sudo nano /etc/default/grub
 ```
 
 ---
 
-### ⚙️ Step 5.2: Apply changes
+### ⚙️ Step 2: Add IPv6 Disable Parameter
+
+Find this line:
 
 ```bash
-sudo sysctl -p
+GRUB_CMDLINE_LINUX=""
+```
+
+Update it to:
+
+```bash
+GRUB_CMDLINE_LINUX="ipv6.disable=1"
+```
+
+📌 If parameters already exist, **append** `ipv6.disable=1` instead of replacing them.
+
+✅ Example:
+
+```bash
+GRUB_CMDLINE_LINUX="quiet splash ipv6.disable=1"
 ```
 
 ---
 
-### 🔄 Step 5.3: Reboot system
+### 🔄 Step 3: Update GRUB
+
+```bash
+sudo update-grub
+```
+
+---
+
+### 🔁 Step 4: Reboot System
 
 ```bash
 sudo reboot
@@ -202,17 +225,35 @@ sudo reboot
 
 ---
 
-### 🔍 Step 5.4: Verify IPv6 is disabled
+### 🔍 Verification (After Reboot)
+
+Check IPv6 addresses:
 
 ```bash
 ip -6 addr
 ```
 
-Expected result:
+✅ Expected result:
 
 ```
 (no output)
 ```
+
+Check kernel IPv6 status:
+
+```bash
+cat /proc/sys/net/ipv6/conf/all/disable_ipv6
+```
+
+✅ Expected output:
+
+```
+1
+```
+
+---
+
+🎯 **Result:** IPv6 is now **fully disabled at kernel level** and will not re-enable automatically.
 
 ---
 
