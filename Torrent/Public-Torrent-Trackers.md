@@ -14,9 +14,9 @@ udp://open.stealth.si:80/announce
 udp://tracker.moeking.me:6969/announce
 ```
 
-## Below is Example of Trackers in QBittorrent App
+## Below is Example of Trackers in qBittorrent App
 
-## [](../assets/torrent-trackers.png)
+![QBittorrent Trackers Example](../assets/torrent-trackers.png)
 
 ## ⚠️ Important Notes
 
