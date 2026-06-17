@@ -1,4 +1,5 @@
 # Techno Snag Repository
+[![oosmetrics](https://api.oosmetrics.com/api/v1/badge/achievement/632d3bd0-1d04-478c-a355-d12476fbcd3f.svg)](https://oosmetrics.com/achievement/632d3bd0-1d04-478c-a355-d12476fbcd3f)
 
 Welcome to the **Techno Snag** repository! 🚀
 
