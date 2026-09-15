@@ -2,7 +2,7 @@
 
 > 🚀 A step-by-step guide to install and run **World Monitor** from the GitHub source code on Ubuntu.
 
-![World-Monitor-Dahsboard](../assets/world-monitor.png)
+![World-Monitor-Dahsboard](../Assets/world-monitor.png)
 
 ## 🌍 What is World Monitor?
 

@@ -16,7 +16,7 @@ udp://tracker.moeking.me:6969/announce
 
 ## Below is Example of Trackers in qBittorrent App
 
-![QBittorrent Trackers Example](../assets/torrent-trackers.png)
+![QBittorrent Trackers Example](../Assets/torrent-trackers.png)
 
 ## ⚠️ Important Notes
 

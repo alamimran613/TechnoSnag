@@ -70,7 +70,7 @@ chrome://version
 
 Example Screenshot:
 
-## ![Chrome Profile Example](../assets/chrome-profiles.png)
+## ![Chrome Profile Example](../Assets/chrome-profiles.png)
 
 ## 🟢 Step 2 — Find Profile Path
 
