@@ -10,20 +10,19 @@ This document records the **Registry-only Software Restriction Policy
 ![allowed-drive](../sample-screenshots/allowed-drive.png)
 ![codeidentifiers](../sample-screenshots/codeidentifiers.png)
 
-
 ## Objective
 
 The configured behavior is:
 
--   `C:\` is treated as an **Unrestricted** location.
--   Executable software from other locations/drives is **Disallowed by
-    default**.
--   The policy applies to the local Administrator account as well.
--   Common executable/installer file types are included in the SRP
-    `ExecutableTypes` list.
--   The configuration was tested successfully:
-    -   An executable from `C:\` ran normally.
-    -   A copy of the executable from another drive was blocked.
+- `C:\` is treated as an **Unrestricted** location.
+- Executable software from other locations/drives is **Disallowed by
+  default**.
+- The policy applies to the local Administrator account as well.
+- Common executable/installer file types are included in the SRP
+  `ExecutableTypes` list.
+- The configuration was tested successfully:
+  - An executable from `C:\` ran normally.
+  - A copy of the executable from another drive was blocked.
 
 > **Important:** This is a practical restriction, not a tamper-proof
 > security boundary. A sufficiently knowledgeable Administrator can
@@ -33,19 +32,19 @@ The configured behavior is:
 > editions. This document records the configuration that was actually
 > implemented and tested on this Windows 10 Home machine.
 
-------------------------------------------------------------------------
+---
 
 # 2. Registry Location
 
 The main SRP registry location is:
 
-``` text
+```text
 HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers
 ```
 
 The configuration uses the following structure:
 
-``` text
+```text
 HKEY_LOCAL_MACHINE
 └── SOFTWARE
     └── Policies
@@ -66,7 +65,7 @@ was added under `0\Paths`.
 
 The active allow rule is under the `262144` branch.
 
-------------------------------------------------------------------------
+---
 
 # 3. Create the Registry Keys
 
@@ -74,13 +73,13 @@ The active allow rule is under the `262144` branch.
 
 Press:
 
-``` text
+```text
 Win + R
 ```
 
 Type:
 
-``` text
+```text
 regedit
 ```
 
@@ -88,25 +87,25 @@ Press **Enter**.
 
 Approve the UAC prompt if displayed.
 
-------------------------------------------------------------------------
+---
 
 ## Step 2 -- Navigate to the SRP location
 
 Go to:
 
-``` text
+```text
 HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows
 ```
 
 Under `Windows`, locate:
 
-``` text
+```text
 Safer
 ```
 
 Then:
 
-``` text
+```text
 Safer\CodeIdentifiers
 ```
 
@@ -114,35 +113,35 @@ In this configuration, `CodeIdentifiers` was already present.
 
 Full path:
 
-``` text
+```text
 HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers
 ```
 
-------------------------------------------------------------------------
+---
 
 # 4. Create the `0` Subkey
 
 Inside:
 
-``` text
+```text
 CodeIdentifiers
 ```
 
 Create a new Registry Key:
 
-``` text
+```text
 0
 ```
 
 Then inside `0`, create another Registry Key:
 
-``` text
+```text
 Paths
 ```
 
 Result:
 
-``` text
+```text
 CodeIdentifiers
 └── 0
     └── Paths
@@ -150,73 +149,73 @@ CodeIdentifiers
 
 No path rule was added under this branch.
 
-------------------------------------------------------------------------
+---
 
 # 5. Create the `262144` Subkey
 
 Inside:
 
-``` text
+```text
 CodeIdentifiers
 ```
 
 create another Registry Key:
 
-``` text
+```text
 262144
 ```
 
 Inside `262144`, create:
 
-``` text
+```text
 Paths
 ```
 
 Result:
 
-``` text
+```text
 CodeIdentifiers
 └── 262144
     └── Paths
 ```
 
-------------------------------------------------------------------------
+---
 
 # 6. Create the Unrestricted `C:\` Path Rule
 
 Navigate to:
 
-``` text
+```text
 HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths
 ```
 
 Create a new Registry Key with this exact name:
 
-``` text
+```text
 {191CD7FA-F240-4A17-8986-94D480A6C8CA}
 ```
 
 Inside that GUID key, create a:
 
-``` text
+```text
 String Value (REG_SZ)
 ```
 
 Name:
 
-``` text
+```text
 ItemData
 ```
 
 Set its value to:
 
-``` text
+```text
 C:\
 ```
 
 Final structure:
 
-``` text
+```text
 CodeIdentifiers
 └── 262144
     └── Paths
@@ -235,13 +234,13 @@ that incorrectly restricting critical Windows directories can affect
 operating-system operation. In this configuration, `C:\` was
 intentionally allowed for that reason.
 
-------------------------------------------------------------------------
+---
 
 # 7. Configure `CodeIdentifiers` Values
 
 Select:
 
-``` text
+```text
 HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers
 ```
 
@@ -251,146 +250,146 @@ The following values were configured.
 
 Type:
 
-``` text
+```text
 REG_DWORD 32 Bit Value
 ```
 
 Name:
 
-``` text
+```text
 DefaultLevel
 ```
 
 Value:
 
-``` text
+```text
 0
 ```
 
 Base:
 
-``` text
+```text
 Decimal
 ```
 
 Meaning:
 
-``` text
+```text
 0 = Disallowed
 ```
 
 This establishes the default SRP behavior as **Disallowed**.
 
-------------------------------------------------------------------------
+---
 
 ## 7.2 `TransparentEnabled`
 
 Type:
 
-``` text
+```text
 REG_DWORD 32 Bit Value
 ```
 
 Name:
 
-``` text
+```text
 TransparentEnabled
 ```
 
 Value:
 
-``` text
+```text
 1
 ```
 
 Base:
 
-``` text
+```text
 Decimal
 ```
 
 This enables the SRP enforcement mode used in this configuration.
 
-------------------------------------------------------------------------
+---
 
 ## 7.3 `PolicyScope`
 
 Type:
 
-``` text
+```text
 REG_DWORD 32 Bit Value
 ```
 
 Name:
 
-``` text
+```text
 PolicyScope
 ```
 
 Value:
 
-``` text
+```text
 0
 ```
 
 Base:
 
-``` text
+```text
 Decimal
 ```
 
 This configuration keeps the policy applicable to the Administrator
 account rather than excluding local administrators.
 
-------------------------------------------------------------------------
+---
 
 ## 7.4 `authenticodenabled`
 
 Type:
 
-``` text
+```text
 REG_DWORD 32 Bit Value
 ```
 
 Name:
 
-``` text
+```text
 authenticodenabled
 ```
 
 Value:
 
-``` text
+```text
 0
 ```
 
 Base:
 
-``` text
+```text
 Decimal
 ```
 
 Certificate-based SRP rules were not enabled in this configuration.
 
-------------------------------------------------------------------------
+---
 
 # 8. Configure `ExecutableTypes`
 
 Inside:
 
-``` text
+```text
 CodeIdentifiers
 ```
 
 create:
 
-``` text
+```text
 ExecutableTypes
 ```
 
 Type:
 
-``` text
+```text
 REG_MULTI_SZ Multi String Value
 ```
 
@@ -400,7 +399,7 @@ REG_MULTI_SZ Multi String Value
 The following entries were configured, with each item on a separate
 line:
 
-``` text
+```text
 ADE
 ADP
 BAS
@@ -438,7 +437,7 @@ WSC
 
 The Registry Editor should show:
 
-``` text
+```text
 ExecutableTypes    REG_MULTI_SZ
 ```
 
@@ -446,7 +445,7 @@ The extensions are entered **without the dot**.
 
 Correct:
 
-``` text
+```text
 EXE
 MSI
 CMD
@@ -455,7 +454,7 @@ BAT
 
 Not:
 
-``` text
+```text
 .exe
 .msi
 .cmd
@@ -465,29 +464,31 @@ Not:
 Microsoft notes that SRP path rules affect only file types included in
 the designated file-type list.
 
-------------------------------------------------------------------------
+---
 
 # 9. Final `CodeIdentifiers` Configuration
 
 The final values under:
 
-``` text
+```text
 HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers
 ```
 
 are:
 
-  Name                    Type                      Value Base
-  ----------------------- -------------- ---------------- ---------
-  `authenticodenabled`   REG_DWORD                   `0` Decimal
-  `DefaultLevel`          REG_DWORD                   `0` Decimal
-  `TransparentEnabled`    REG_DWORD                   `1` Decimal
-  `PolicyScope`           REG_DWORD                   `0` Decimal
-  `ExecutableTypes`       REG_MULTI_SZ     See list above N/A
+Name Type Value Base
+
+---
+
+`authenticodenabled` REG_DWORD `0` Decimal
+`DefaultLevel` REG_DWORD `0` Decimal
+`TransparentEnabled` REG_DWORD `1` Decimal
+`PolicyScope` REG_DWORD `0` Decimal
+`ExecutableTypes` REG_MULTI_SZ See list above N/A
 
 The path-rule branch is:
 
-``` text
+```text
 CodeIdentifiers
 └── 262144
     └── Paths
@@ -495,13 +496,13 @@ CodeIdentifiers
             └── ItemData = C:\
 ```
 
-------------------------------------------------------------------------
+---
 
 # 10. Complete Registry Tree
 
 For reference, the complete configuration created during this setup is:
 
-``` text
+```text
 HKEY_LOCAL_MACHINE
 └── SOFTWARE
     └── Policies
@@ -525,13 +526,13 @@ HKEY_LOCAL_MACHINE
                                     └── ItemData    REG_SZ    C:\
 ```
 
-------------------------------------------------------------------------
+---
 
 # 11. How the Configuration Works
 
 The policy follows this basic model:
 
-``` text
+```text
 Default SRP level
         │
         ▼
@@ -544,49 +545,51 @@ Default SRP level
 
 Therefore:
 
-  Location                                    Expected behavior
-  ------------------------------------------- -----------------------------------------
-  `C:\`                                       Allowed
-  `D:\`                                       Blocked for designated executable types
-  `E:\`                                       Blocked for designated executable types
-  Other local drives                          Blocked for designated executable types
-  Removable drives                            Blocked for designated executable types
-  Portable EXE on non-C drive                 Blocked
-  Installer EXE on non-C drive                Blocked
-  Existing application installed under C:\\   Allowed
+Location Expected behavior
+
+---
+
+`C:\` Allowed
+`D:\` Blocked for designated executable types
+`E:\` Blocked for designated executable types
+Other local drives Blocked for designated executable types
+Removable drives Blocked for designated executable types
+Portable EXE on non-C drive Blocked
+Installer EXE on non-C drive Blocked
+Existing application installed under C:\\ Allowed
 
 The exact behavior depends on the executable type being included in
 `ExecutableTypes` and on the applicable SRP rule precedence.
 
-------------------------------------------------------------------------
+---
 
 # 12. Testing Procedure
 
 After applying the policy, test with a harmless Windows executable.
 
-## Test 1 -- Run from C: 
+## Test 1 -- Run from C:
 
 Use:
 
-``` text
+```text
 C:\Windows\System32\notepad.exe
 ```
 
 Expected:
 
-``` text
+```text
 Runs normally
 ```
 
 This confirms that the `C:\` Unrestricted path rule is working.
 
-------------------------------------------------------------------------
+---
 
 ## Test 2 -- Copy the same executable to another drive
 
 For example:
 
-``` text
+```text
 D:\Test\notepad.exe
 ```
 
@@ -594,20 +597,20 @@ Try to run it.
 
 Expected:
 
-``` text
+```text
 Execution is blocked by Software Restriction Policy.
 ```
 
 This confirms that the default Disallowed rule is being applied outside
 the explicitly allowed path.
 
-------------------------------------------------------------------------
+---
 
 # 13. Backup / Recovery
 
 Before modifying the policy in the future, export:
 
-``` text
+```text
 HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer
 ```
 
@@ -617,14 +620,14 @@ In Registry Editor:
 2.  Select **Export**.
 3.  Save the backup as, for example:
 
-``` text
+```text
 SRP-Safer-Backup.reg
 ```
 
 To restore the configuration later, double-click the backup `.reg` file
 and restart/log off as appropriate.
 
-------------------------------------------------------------------------
+---
 
 # 14. Important Maintenance Notes
 
@@ -632,7 +635,7 @@ and restart/log off as appropriate.
 
 Current value:
 
-``` text
+```text
 DefaultLevel = 0
 ```
 
@@ -640,7 +643,7 @@ This is the core of the restriction.
 
 Changing it can change the overall allow/deny behavior.
 
-------------------------------------------------------------------------
+---
 
 ## Do not remove the `C:\` Unrestricted rule without testing
 
@@ -650,19 +653,19 @@ Windows and existing applications may rely on executables located under
 The current configuration intentionally allows `C:\` so that normal
 Windows components and existing applications continue to operate.
 
-------------------------------------------------------------------------
+---
 
 ## Keep the Administrator account configuration in mind
 
 The policy was deliberately configured with:
 
-``` text
+```text
 PolicyScope = 0
 ```
 
 because the target user is using an Administrator account.
 
-------------------------------------------------------------------------
+---
 
 ## Test after major Windows/application changes
 
@@ -674,7 +677,7 @@ If an application is moved outside an allowed path, SRP can block it.
 Microsoft also notes that SRP is path-based for path rules, so moving
 software can change whether a path rule applies.
 
-------------------------------------------------------------------------
+---
 
 # 15. Limitations
 
@@ -686,11 +689,11 @@ application-control system.
 
 A knowledgeable Administrator with sufficient access can potentially:
 
--   Modify the Registry.
--   Remove or alter SRP settings.
--   Change permissions.
--   Disable or alter related services/policies.
--   Restore the system from another administrative environment.
+- Modify the Registry.
+- Remove or alter SRP settings.
+- Change permissions.
+- Disable or alter related services/policies.
+- Restore the system from another administrative environment.
 
 Microsoft recommends newer application-control technologies for modern
 Windows environments because Software Restriction Policies were
@@ -700,19 +703,19 @@ For this particular Windows 10 Home deployment, however, the
 Registry-based configuration above was **successfully applied and
 tested**.
 
-------------------------------------------------------------------------
+---
 
 # 16. Quick Reference
 
 ### Main key
 
-``` text
+```text
 HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers
 ```
 
 ### Values
 
-``` text
+```text
 DefaultLevel = 0
 TransparentEnabled = 1
 PolicyScope = 0
@@ -721,61 +724,61 @@ authenticodenabled = 0
 
 All four are:
 
-``` text
+```text
 REG_DWORD
 Base: Decimal
 ```
 
 ### ExecutableTypes
 
-``` text
+```text
 REG_MULTI_SZ
 ```
 
 ### Allowed path
 
-``` text
+```text
 C:\
 ```
 
 Stored as:
 
-``` text
+```text
 HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{191CD7FA-F240-4A17-8986-94D480A6C8CA}\ItemData
 ```
 
 Type:
 
-``` text
+```text
 REG_SZ
 ```
 
 Value:
 
-``` text
+```text
 C:\
 ```
 
 ### Final policy concept
 
-``` text
+```text
 C:\                 → ALLOWED
 Other locations     → DISALLOWED by default
 Administrator       → POLICY APPLIES
 ```
 
-------------------------------------------------------------------------
+---
 
 # 17. Microsoft References
 
--   Software Restriction Policies -- Microsoft Learn:
-    https://learn.microsoft.com/en-us/windows-server/identity/software-restriction-policies/software-restriction-policies
+- Software Restriction Policies -- Microsoft Learn:
+  https://learn.microsoft.com/en-us/windows-server/identity/software-restriction-policies/software-restriction-policies
 
--   Work with Software Restriction Policies Rules -- Microsoft Learn:
-    https://learn.microsoft.com/en-us/windows-server/identity/software-restriction-policies/work-with-software-restriction-policies-rules
+- Work with Software Restriction Policies Rules -- Microsoft Learn:
+  https://learn.microsoft.com/en-us/windows-server/identity/software-restriction-policies/work-with-software-restriction-policies-rules
 
--   Administer Software Restriction Policies -- Microsoft Learn:
-    https://learn.microsoft.com/en-us/windows-server/identity/software-restriction-policies/administer-software-restriction-policies
+- Administer Software Restriction Policies -- Microsoft Learn:
+  https://learn.microsoft.com/en-us/windows-server/identity/software-restriction-policies/administer-software-restriction-policies
 
--   Software Restriction Policies Technical Overview -- Microsoft Learn:
-    https://learn.microsoft.com/en-us/windows-server/identity/software-restriction-policies/software-restriction-policies-technical-overview
+- Software Restriction Policies Technical Overview -- Microsoft Learn:
+  https://learn.microsoft.com/en-us/windows-server/identity/software-restriction-policies/software-restriction-policies-technical-overview
